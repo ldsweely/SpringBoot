@@ -4,14 +4,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloController {
+public class DataController {
 	
-    @RequestMapping("/")
+    @RequestMapping("/d/i")
     public String index() {
-        return "Hello Spring Boot 2.0!";
+        return "Hello data index!";
     }
-    @RequestMapping("/liuds")
+    @RequestMapping("/d/l")
     public String liuds() {
-        return "你好，刘笃师!";
+        return "数据列表!";
     }
 }
