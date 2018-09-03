@@ -45,18 +45,18 @@ public class KafkaConsumerSimple implements Runnable {
     public static void main(String[] args) throws Exception{
         Properties props = new Properties();
         props.put("group.id", "dashujujiagoushi");
-        props.put("zookeeper.connect", "zk01:2181,zk02:2181,zk03:2181");
+        props.put("zookeeper.connect", "Mini05:2181,Mini06:2181,Mini07:2181");
         props.put("auto.offset.reset", "largest");
         props.put("auto.commit.interval.ms", "1000");
         props.put("partition.assignment.strategy", "roundrobin");
         ConsumerConfig config = new ConsumerConfig(props);
-        String topic1 = "orderMq";
-        String topic2 = "paymentMq";
+        String topic1 = "test_MQ";
+//        String topic2 = "paymentMq";
         //只要ConsumerConnector还在的话，consumer会一直等待新消息，不会自己退出
         ConsumerConnector consumerConn = Consumer.createJavaConsumerConnector(config);
         //定义一个map
         Map<String, Integer> topicCountMap = new HashMap<>();
-        topicCountMap.put(topic1, 3);
+        topicCountMap.put(topic1, 1);
         //Map<String, List<KafkaStream<byte[], byte[]>> 中String是topic， List<KafkaStream<byte[], byte[]>是对应的流
         Map<String, List<KafkaStream<byte[], byte[]>>> topicStreamsMap = consumerConn.createMessageStreams(topicCountMap);
         //取出 `kafkaTest` 对应的 streams
